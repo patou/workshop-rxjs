@@ -1,18 +1,251 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/black.css">
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>Slide 1</section>
-        <section>Slide 2</section>
-      </div>
+
+<head>
+  <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/white.css">
+  <link rel="stylesheet" href="/node_modules/reveal.js/plugin/highlight/zenburn.css" id="highlight-theme">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>RxJS</h1>
+        <img src="https://gblobscdn.gitbook.com/spaces%2F-LwY_OXUQHvmdEoy0xNa%2Favatar.png?alt=media" />
+        <p>Framework reactif</p>
+      </section>
+      <section>
+        <section>
+          <p>Programmation reactive est un flux d'évènements, avec un début et une fin ()</p>
+          <div class="fragment">
+            <svg width="684" height="63"
+              style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;">
+              <g transform="translate(0, 11)">
+                <g transform="translate(21, 0)">
+                  <line x1="0" y1="26" x2="653" y2="26" stroke-width="2" stroke="rgba(0, 0, 0, 0.2)"
+                    style="shape-rendering: crispedges;"></line>
+                  <line x1="0" y1="26" x2="522.9224" y2="26" stroke-width="2" stroke="#000000"
+                    style="shape-rendering: crispedges;"></line>
+                  <path transform="translate(653, 21)" d="M0 0 L10 5 L0 10 z" fill="rgba(0, 0, 0, 0.2)"
+                    style="transition: fill 0.2s ease-in-out 0s;"></path>
+                  <line x1="522.9223999999999" y1="3.5" x2="522.9223999999999" y2="48.5" stroke-width="2"
+                    stroke="#000000" style="opacity: 1; transition: opacity 0.5s ease-in-out 0s;"></line>
+                  <g>
+                    <g
+                      style="transform: translate(130.731px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                      <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0"
+                        y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">0</text>
+                    </g>
+                    <g
+                      style="transform: translate(261.331px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                      <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0"
+                        y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">1</text>
+                    </g>
+                    <g
+                      style="transform: translate(391.931px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                      <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0"
+                        y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">2</text>
+                    </g>
+                    <g
+                      style="transform: translate(522.661px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                      <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0"
+                        y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">3</text>
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <g style="text-anchor: start; dominant-baseline: text-before-edge;"></g>
+            </svg>
+          </div>
+          <div class="fragment">
+            <svg width="804" height="63"
+              style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;">
+              <g transform="translate(0, 11)">
+                <g transform="translate(21, 0)">
+                  <line x1="0" y1="26" x2="773" y2="26" stroke-width="2" stroke="rgba(0, 0, 0, 0.2)"
+                    style="shape-rendering: crispedges;"></line>
+                  <line x1="0" y1="26" x2="618.4" y2="26" stroke-width="2" stroke="#000000"
+                    style="shape-rendering: crispedges;"></line>
+                  <path transform="translate(773, 21)" d="M0 0 L10 5 L0 10 z" fill="rgba(0, 0, 0, 0.2)"
+                    style="transition: fill 0.2s ease-in-out 0s;"></path>
+                    <g>
+                      <g
+                        style="transform: translate(130.731px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0"
+                          y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">0</text>
+                      </g>
+                      <g
+                        style="transform: translate(261.331px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0"
+                          y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">1</text>
+                      </g>
+                      <g
+                        style="transform: translate(391.931px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0"
+                          y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">2</text>
+                      </g>
+                      <g
+                        style="transform: translate(522.661px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0"
+                          y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">3</text>
+                      </g>
+                    </g>
+                  <g style="opacity: 1; transition: opacity 0.5s ease-in-out 0s;">
+                    <line x1="609.4000000000001" y1="17" x2="627.4000000000001" y2="35" stroke-width="2"
+                      stroke="#000000"></line>
+                    <line x1="609.4000000000001" y1="35" x2="627.4000000000001" y2="17" stroke-width="2"
+                      stroke="#000000"></line>
+                    <rect x="609.4000000000001" y="17" width="18" height="18" fill="transparent"></rect>
+                  </g>
+                </g>
+              </g>
+              <g style="text-anchor: start; dominant-baseline: text-before-edge;"></g>
+            </svg>
+          </div>
+        </section>
+        <section>
+          <h3>Exemple de flux</h3>
+          <ul>
+            <li class="fragment">clic sur un bouton</li>
+            <li class="fragment">Requete HTTP</li>
+            <li class="fragment">Connexion/déconnexion d'un utilisateur</li>
+            <li class="fragment">Saisie dans un champs texte</li>
+            <li class="fragment">Horloge</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Observable</h1>
+          <p class="fragment">Emet des évènements</p>
+          <p class="fragment">Permet de s'abonner aux évènements</p>
+          <p class="fragment">Notifie tous ceux qui se sont abonné lorsqu'il envoie un évènement</p>
+        </section>
+        <section>
+
+        </section>
+        <section>
+          <h1>Observer</h1>
+        </section>
+      </section>
+      <section>
+        <section>Subject</section>
+        <section>BehaviorSubject</section>
+        <section>ReplaySubject</section>
+        <section>AsyncSubject</section>
+      </section>
+      <section>
+        <section>Operators</section>
+        <section>
+          <pre><code data-trim data-noescape>
+                of(1, 2, 3, 4, 5)
+                .pipe(
+                    filter(x => x % 2 === 0),
+                    map(x => x + 1),
+                )
+                .subscribe(console.log);
+                </code></pre>
+        </section>
+      </section>
+      <section>
+        <section>TP</section>
+        <section>
+          <h1>Utilisation du site <a href="https://rxviz.com">rxviz.com</a></h1>
+          <p class="fragment">Ce site permet de visualiser des flux rxjs, et écrire son propre code</p>
+          <p class="fragment">Présente déjà des exemples utilisable</p>
+        </section>
+        <section>
+          <p>Faire les imports</p>
+          <pre><code data-trim data-noescape data-line-numbers="1-2|3-5">
+            const { interval } = Rx;
+            const { map } = RxOperators;
+            // Equivalant à 
+            import { interval } from 'rxjs';
+            import { map } from 'rxjs/operators';
+            </code></pre>
+        </section>
+        <section>
+          <p class="fragment">Pour une visualisation, il faut utiliser l'observable interval</p>
+          <p class="fragment">La dernière ligne doit retourner un observable (l'outil fait un subscribe)</p>
+          <pre><code data-trim data-noescape data-line-numbers="3|5">
+            const { interval } = Rx;
+            const { map } = RxOperators;
+            
+            interval(1000) // Envoi toutes les secondes un nombre qui s'autoincrémente
+            .pipe(
+              map(x => x + 1) // les opérateurs que l'on fait
+            )
+            </code></pre>
+        </section>
+        <section>
+          <h2>TP1) Compteur</h2>
+          <a href="https://rxviz.com/examples/custom">Partir de ce code</a>
+          <p class="fragment">Faire un conteur de 5 valeur (1, 2, 3, 4, 5) </p>
+          <p class="fragment">Ne garder que les nombres paire <span style="font-family: monospace;background-color: lightgrey;">% 2 === 2</span>)</p>
+          <p class="fragment">Multiplier le code par 2</p>
+        </section>
+        <section>
+          <h2>TP2) Autocomplétion</h2>
+          <a href="https://rxviz.com/examples/input-element">Partir de ce code</a>
+          <p class="fragment">S'abonner à champ input et émettre les caractères (déjà fait)</p>
+          <p class="fragment">Agréger les caractères en des mots</p>
+          <p class="fragment">N'envoyer un élèment que toutes les secondes</p>
+          <p class="fragment">Arrêter le flux lorsque que l'on tappe Enter</p>
+        </section>
+        <section>
+          <p>Solution TP 1</p>
+          <pre><code data-trim data-noescape data-line-numbers="6|7|8">
+const { interval } = Rx;
+const { take, map, filter } = RxOperators;
+  
+interval(1000)
+.pipe(
+  take(5),
+  filter(x => x % 2 === 0),
+  map(x => x * 2)
+  );
+            </code></pre>
+        </section>
+        <section>
+          <p>Solution TP 2</p>
+          <pre><code data-trim data-noescape data-line-numbers="10,11|13|14|12">
+const { fromEvent } = Rx;
+const { map, filter, scan, debounceTime, takeWhile } = RxOperators;
+
+const input = document.createElement('input');
+input.setAttribute('placeholder', 'Type something');
+output.prepend(input);
+input.focus();
+
+fromEvent(input, 'keydown').pipe(
+  map(e => e.key),
+  takeWhile(key => key !== 'Enter'),
+  filter(key => key !== ' '),
+  scan((acc, valeur) => acc + valeur),
+  debounceTime(1000)
+)
+            </code></pre>
+        </section>
+      </section>
+      <section>
+        <h3>Liens</h3>
+        <ul>
+          <li class="fragment"><a href="http://reactivex.io/">reactivex.io</a></li>
+          <li class="fragment"><a href="https://www.learnrxjs.io/">learnrxjs.io</a></li>
+          <li class="fragment"><a href="https://rxmarbles.com/">rxmarbles.com</a></li>
+          <li class="fragment"><a href="https://rxviz.com/">rxviz.com</a></li>
+          <li class="fragment"><a href="https://reactive.how/">reactive.how</a></li>
+        </ul>
+      </section>
     </div>
-    <script src="/node_modules/reveal.js/dist/reveal.js"></script>
-    <script>
-      Reveal.initialize();
-    </script>
-  </body>
+  </div>
+  <script src="/node_modules/reveal.js/dist/reveal.js"></script>
+  <script src="/node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      slideNumber: true,
+      hash: true,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
 </html>

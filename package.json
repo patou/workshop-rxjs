@@ -4,13 +4,15 @@
     "description": "",
     "type": "module",
     "dependencies": {
-        "esm": "^3.2.25",
-        "reveal.js": "^4.0.2",
         "rxjs": "^6.4.0"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "http-server": "^0.12.3",
+        "esm": "^3.2.25",
+        "reveal.js": "^4.0.2"
+    },
     "scripts": {
-        "start": "",
+        "start": "http-server",
         "ex1": "node -r esm excercice/excercice1.js"
     },
     "author": "Patrice de Saint Steban",
