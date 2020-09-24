@@ -4,15 +4,18 @@
     "description": "",
     "type": "module",
     "dependencies": {
-        "rxjs": "^6.4.0"
-    },
-    "devDependencies": {
-        "http-server": "^0.12.3",
-        "esm": "^3.2.25",
+        "rxjs": "^6.4.0",
         "reveal.js": "^4.0.2"
     },
+    "devDependencies": {
+        "esm": "^3.2.25",
+        "http-server": "^0.12.3",
+        "parcel-bundler": "^1.12.4"
+    },
     "scripts": {
-        "start": "http-server",
+        "start": "parcel index.html",
+        "server": "http-server",
+        "build": "cp -r node_modules/reveal.js/dist/* node_modules/reveal.js/plugin revealjs/",
         "ex1": "node -r esm excercice/excercice1.js"
     },
     "author": "Patrice de Saint Steban",

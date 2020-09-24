@@ -2,8 +2,8 @@ name: github pages
 
 on:
   push:
-    branches:
-      - master
+    branches-ignore:
+      - '**'
 
 jobs:
   deploy:
@@ -25,6 +25,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: npm ci
+      - run: npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
