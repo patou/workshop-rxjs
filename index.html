@@ -239,6 +239,31 @@
           <img src="img/takeWhile.png" class="r-stretch"/>
           <p class="fragment">Prend les élément tant que la condition est vrai</p>
         </section>
+        <section>
+          <h3>Merge</h3>
+          <img src="img/merge.png" class="r-stretch"/>
+          <p class="fragment">Merge plusieurs flux dans un seul flux</p>
+        </section>
+        <section>
+          <h3>Créer un opérateur custom</h3>
+          <pre><code data-trim data-noescape>
+            const plusX = (x: number) => source$ => Observable.create(observer =>
+              source$.subscribe(
+                value => {
+                  observer.next(value + x);
+                },
+                err => observer.error(err),
+                () => observer.complete()
+              )
+            );
+            </code></pre>
+        </section>
+        <section>
+          <h3>Créer un opérateur custom</h3>
+          <pre><code data-trim data-noescape>
+            const plusX = (x: number) => map(value => value + 1);
+            </code></pre>
+        </section>
       </section>
       <section>
         <section>TP</section>
@@ -249,10 +274,10 @@
         </section>
         <section>
           <p>Faire les imports</p>
-          <pre><code data-trim data-noescape data-line-numbers="1-2|3-5">
+          <pre><code data-trim data-noescape>
             const { interval } = Rx;
             const { map } = RxOperators;
-            // Equivalant à 
+            // Equivalent à 
             import { interval } from 'rxjs';
             import { map } from 'rxjs/operators';
             </code></pre>
@@ -260,7 +285,7 @@
         <section>
           <p class="fragment">Pour une visualisation, il faut utiliser l'observable interval</p>
           <p class="fragment">La dernière ligne doit retourner un observable (l'outil fait un subscribe)</p>
-          <pre><code data-trim data-noescape data-line-numbers="3|5">
+          <pre><code data-trim data-noescape>
             const { interval } = Rx;
             const { map } = RxOperators;
             
@@ -286,8 +311,8 @@
           <p class="fragment">Arrêter le flux lorsque que l'on tappe Enter</p>
         </section>
         <section>
-          <p>Solution TP 1</p>
-          <pre><code data-trim data-noescape data-line-numbers="6|7|8">
+          <h3>Solution TP 1</h3>
+          <pre><code data-trim data-noescape>
 const { interval } = Rx;
 const { take, map, filter } = RxOperators;
   
@@ -300,8 +325,8 @@ interval(1000)
             </code></pre>
         </section>
         <section>
-          <p>Solution TP 2</p>
-          <pre><code data-trim data-noescape data-line-numbers="10,11|13|14|12">
+          <h3>Solution TP 2</h3>
+          <pre><code data-trim data-noescape>
 const { fromEvent } = Rx;
 const { map, filter, scan, debounceTime, takeWhile } = RxOperators;
 
