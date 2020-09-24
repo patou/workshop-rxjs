@@ -15,8 +15,9 @@
         <p>Framework reactif</p>
       </section>
       <section>
+        <section>Observable</section>
         <section>
-          <p>Programmation reactive est un flux d'évènements, avec un début et une fin ()</p>
+          <p>Programmation reactive est un flux d'évènements, avec un début et une fin (ou erreur)</p>
           <div class="fragment">
             <svg width="684" height="63"
               style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;">
@@ -106,10 +107,11 @@
         <section>
           <h3>Exemple de flux</h3>
           <ul>
-            <li class="fragment">clic sur un bouton</li>
+            <li class="fragment">Clic sur un bouton</li>
             <li class="fragment">Requete HTTP</li>
             <li class="fragment">Connexion/déconnexion d'un utilisateur</li>
             <li class="fragment">Saisie dans un champs texte</li>
+            <li class="fragment">Changement des paramètres de l'url</li>
             <li class="fragment">Horloge</li>
           </ul>
         </section>
@@ -120,17 +122,77 @@
           <p class="fragment">Notifie tous ceux qui se sont abonné lorsqu'il envoie un évènement</p>
         </section>
         <section>
-
+          <h3>Trois états</h3>
+          <ul>
+            <li>Next: Nouvel élément dans le flux</li>
+            <li>Complete: Le flux est terminé</li>
+            <li>Error: Le flux est terminé par une erreur</li>
+          </ul>
         </section>
         <section>
-          <h1>Observer</h1>
+          <pre><code data-trim data-noescape>
+            const source = Observable.create((observer) => {
+              observer.next('Bonjour');
+              observer.next('le monde !');
+              observer.error(new Error('Erreur. :/'));
+              observer.complete();
+            });
+            </code></pre>
+        </section>
+        <section>
+          <h3>S'abonner à un observable</h3>
+          <pre><code data-trim data-noescape>
+            source.subscribe(
+              (data) => displayMessage(data),
+              (error) => console.error('error', error),
+              () => console.log('complete')
+            )
+            </code></pre>
+        </section>
+        <section>
+          <h3>of</h3>
+          <pre><code data-trim data-noescape>
+            of(1, 2, 3, 4, 5)
+            </code></pre>
+          <p>Crée un observable sur plusieurs valeurs statique (utile pour les test, ou envoyer une valeur unique)</p>
+        </section>
+        <section>
+          <h3>interval</h3>
+          <pre><code data-trim data-noescape>
+            interval(1000)
+            </code></pre>
+          <p>Envoi un nombre qui s'incrémente toute les 1000 ms (1 seconde)</p>
+        </section>
+        <section>
+          <h3>fromEvent</h3>
+          <pre><code data-trim data-noescape>
+            fromEvent(button, 'click')
+            </code></pre>
+          <p>S'abonne à un évènement DOM</p>
         </section>
       </section>
       <section>
         <section>Subject</section>
-        <section>BehaviorSubject</section>
-        <section>ReplaySubject</section>
-        <section>AsyncSubject</section>
+        <section>
+          <h3>Subject</h3>
+          <img src="img/S.PublishSubject.png" class="r-stretch"/>
+          <p class="fragment">Observable qui expose l'API Observer (méthodes next, complete, error)</p>
+        </section>
+        <section>
+          <h3>BehaviorSubject</h3>
+          <img src="img/S.BehaviorSubject.png" class="r-stretch"/>
+          <p class="fragment">Lorsque l'on subscribe, on récupère la dernière valeur ou la valeur par défaut</p>
+        </section>
+        <section>
+          <h3>ReplaySubject</h3>
+          <img src="img/S.ReplaySubject.png" class="r-stretch"/>
+          <p class="fragment">Lorsque l'on subscribe, on récupère toutes les valeurs déjà envoyé dans le flux</p>
+        </section>
+        <section>
+          <h3>AsyncSubject</h3>
+          <img src="img/S.AsyncSubject.png" class="r-stretch"/>
+          <p class="fragment">On reçoit simplement la dernière valeur lorsque le flux est finit</p>
+        </section>
       </section>
       <section>
         <section>Operators</section>
@@ -144,6 +206,7 @@
                 .subscribe(console.log);
                 </code></pre>
         </section>
+        <section></section>
       </section>
       <section>
         <section>TP</section>
