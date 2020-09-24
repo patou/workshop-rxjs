@@ -296,19 +296,34 @@
             </code></pre>
         </section>
         <section>
-          <h2>TP1) Compteur</h2>
+          <h2><b>TP1</b>) Compteur</h2>
           <a href="https://rxviz.com/examples/custom">Partir de ce code</a>
           <p class="fragment">Faire un conteur de 5 valeur (1, 2, 3, 4, 5) </p>
           <p class="fragment">Ne garder que les nombres paire <span style="font-family: monospace;background-color: lightgrey;">% 2 === 2</span>)</p>
           <p class="fragment">Multiplier le code par 2</p>
         </section>
         <section>
-          <h2>TP2) Autocomplétion</h2>
+          <h2><b>TP2</b>) Autocomplétion</h2>
           <a href="https://rxviz.com/examples/input-element">Partir de ce code</a>
           <p class="fragment">S'abonner à champ input et émettre les caractères (déjà fait)</p>
           <p class="fragment">Agréger les caractères en des mots</p>
           <p class="fragment">N'envoyer un élèment que toutes les secondes</p>
           <p class="fragment">Arrêter le flux lorsque que l'on tappe Enter</p>
+        </section>
+        <section>
+          <h2><b>TP3</b>) Pagination et trie</h2>
+          <p class="fragment">Créer deux boutons, un pour changer de page, un pour inverser le trie</p>
+          <p class="fragment">Pour chaque clic sur le bouton de page, incrémenter la page</p>
+          <p class="fragment">Pour chaque clic sur le bouton de trie, inverser le sens du trie</p>
+          <p class="fragment">Combiner les deux dernière valeur pour lancer le rafraichissement de la page</p>
+        </section>
+        <section>
+          <h2><b>TP3</b>) Pagination et trie</h2>
+          <img src="img/tp3.jpg"/>
+        </section>
+        <section>
+          <h2><b>TP4</b>) Triple clic</h2>
+          <p>Afficher un c lorsque l'on fait un triple clic </p>
         </section>
         <section>
           <h3>Solution TP 1</h3>
@@ -343,6 +358,59 @@ fromEvent(input, 'keydown').pipe(
   debounceTime(1000)
 )
             </code></pre>
+        </section>
+        <section>
+          <h3>Solution TP 3 : Création des boutons</h3>
+          <img src="img/tp3.jpg"/>
+          <pre><code data-trim data-noescape>
+            const { fromEvent, combineLatest } = Rx;
+            const { map, filter, scan, tap, startWith } = RxOperators;
+            
+            const pageButton = document.createElement('button');
+            pageButton.innerText = 'Page 0';
+            
+            const sortButton = document.createElement('button');
+            sortButton.innerText = 'a';
+            
+            output.prepend(pageButton);
+            output.prepend(sortButton);
+          </code></pre>
+        </section>
+        <section>
+          <p>Bouton page</p>
+          <pre><code data-trim data-noescape>
+            const page$ = fromEvent(pageButton, 'click').pipe(
+              startWith(1),
+              scan(acc => acc+1),
+              tap(page => pageButton.innerText = `Page ${page}`)
+            )
+          </code></pre>
+          <p>Bouton Trie</p>
+          <pre><code data-trim data-noescape>
+            const sort$ = fromEvent(sortButton, 'click').pipe(
+              startWith(true),
+              scan(acc => !acc),
+              map(sort => sort ? 'a' : 'z'),
+              tap(sort => sortButton.innerText = sort)
+            )
+          </code></pre>
+            <p>Combiner les trie et sort</p>
+            <pre><code data-trim data-noescape>
+              combineLatest(page$, sort$).pipe(map(([page, sort]) => page+sort))
+            </code></pre>
+        </section>
+        <section>
+          <h3>TP4) Triple Clic</h3>
+          <pre><code data-noescape data-trim>
+const { fromEvent } = Rx;
+const { mapTo, filter, bufferTime } = RxOperators;
+
+fromEvent(document, 'click').pipe(
+  bufferTime(1000),
+  filter(clicks => clicks.length === 3),
+  mapTo('c')
+)
+          </code></pre>
         </section>
       </section>
       <section>
